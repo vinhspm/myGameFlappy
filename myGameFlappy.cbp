@@ -51,8 +51,6 @@
 		<Unit filename="ThreatsObject.cpp" />
 		<Unit filename="ThreatsObject.h" />
 		<Unit filename="commonFunc.h" />
-		<Unit filename="game_map.cpp" />
-		<Unit filename="game_map.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="mainObject.cpp" />
 		<Unit filename="mainObject.h" />
