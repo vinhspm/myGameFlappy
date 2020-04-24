@@ -90,7 +90,7 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer *screen)
             {
                 status_ = UPDOWN_UP;
                 input_type_.up_ = 1;
-                y_pos_ -= 20;
+                y_pos_ -= 80;
 
             }
             break;
@@ -107,7 +107,6 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer *screen)
             {
                 status_ = UPDOWN_UP;
                 input_type_.up_ = 0;
-                y_pos_ += 15;
 
             }
             break;
@@ -116,8 +115,13 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer *screen)
 
         }
     }
-    else y_pos_ += 10;
+    else
+    {
+        status_ = UPDOWN_DOWN;
+        input_type_.up_ = 0;
+        y_pos_ += 30;
 
+    }
 }
 
 
