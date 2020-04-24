@@ -7,6 +7,8 @@
 
 #define WIDTH_THREAT 50
 #define HEIGHT_THREAT 200
+#define GAP_THREAT 150
+
 
 
 class ThreatObject : public BaseObject
@@ -15,10 +17,11 @@ public:
     ThreatObject();
     ~ThreatObject();
 
-    void HandleMove(const int&x_bordr, const int& y_bordr);
+    void HandleMove1(const int&x_bordr, const int& y_bordr);
+    void HandleMove2(const int&x_bordr, const int& y_bordr);
     void HandleInputAction(SDL_Event events);
     void Show_1(SDL_Renderer*des);
-    void set_x_val(const int&val){x_val_ = val;}
+    void set_x_val(const double&val){x_val_ = val;}
     void set_y_val(const int&val){y_val_ = val;}
     int get_x_val() const {return x_val_;}
     int get_y_val() const {return y_val_;}
@@ -29,7 +32,7 @@ public:
         return a;
     }
 private:
-    int x_val_;
+    double x_val_;
     int y_val_;
 
 };
