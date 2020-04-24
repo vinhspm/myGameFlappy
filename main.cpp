@@ -8,6 +8,7 @@ BaseObject g_background;
 SDL_Surface* g_object = NULL;
 
 
+
 bool InitData()
 {
     bool success = true;
@@ -74,10 +75,6 @@ int main(int argc, char* argv[])
     if(LoadBackGround() == false)
         return -1;
 
-    GameMap game_map;
-    game_map.LoadMap("map\\map.dat");
-    game_map.LoadTiles(g_screen);
-
     bool is_quit = false;
 
     MainObject p_player;
@@ -85,11 +82,41 @@ int main(int argc, char* argv[])
     p_player.set_clips();
 
     //make threats
-    ThreatObject* p_threat =  new ThreatObject();
-    bool ret = p_threat ->LoadImg("img/threat.png",g_screen);
-    if(ret == false) return 10;
-    p_threat ->SetRect(1000,-200);
-    p_threat->set_x_val(1);
+    ThreatObject* p_threat1 =  new ThreatObject();
+    bool ret1 = p_threat1 ->LoadImg("img/threat.png",g_screen);
+    if(ret1 == false) return 10;
+    p_threat1 ->SetRect(2 * SCREEN_WIDTH / 3 - WIDTH_THREAT /3,-300);
+    p_threat1->set_x_val(0.6);
+
+    ThreatObject* p_threat2 =  new ThreatObject();
+    bool ret2 = p_threat2 ->LoadImg("img/threat2.png",g_screen);
+    if(ret2 == false) return 10;
+    p_threat2 ->SetRect(2 * SCREEN_WIDTH / 3 - WIDTH_THREAT /3,450);
+    p_threat2->set_x_val(0.6);
+
+    ThreatObject* p_threat3 =  new ThreatObject();
+    bool ret3 = p_threat3 ->LoadImg("img/threat.png",g_screen);
+    if(ret3 == false) return 10;
+    p_threat3 ->SetRect(SCREEN_WIDTH,-200);
+    p_threat3 ->set_x_val(0.6);
+
+    ThreatObject* p_threat4 =  new ThreatObject();
+    bool ret4 = p_threat4 ->LoadImg("img/threat2.png",g_screen);
+    if(ret4 == false) return 10;
+    p_threat4 ->SetRect(SCREEN_WIDTH,550);
+    p_threat4->set_x_val(0.6);
+
+    ThreatObject* p_threat5 =  new ThreatObject();
+    bool ret5 = p_threat5 ->LoadImg("img/threat.png",g_screen);
+    if(ret5 == false) return 10;
+    p_threat5 ->SetRect(4 * SCREEN_WIDTH / 3 + WIDTH_THREAT / 3,-400);
+    p_threat5 ->set_x_val(0.6);
+
+    ThreatObject* p_threat6 =  new ThreatObject();
+    bool ret6 = p_threat6 ->LoadImg("img/threat2.png",g_screen);
+    if(ret6 == false) return 10;
+    p_threat6 ->SetRect(4 * SCREEN_WIDTH / 3 + WIDTH_THREAT / 3,350);
+    p_threat6->set_x_val(0.6);
 
 
     while(!is_quit)
@@ -113,11 +140,21 @@ int main(int argc, char* argv[])
         p_player.Show(g_screen);
 
 
-        //game_map.DrawMap(g_screen);
-        p_threat->Show_1(g_screen);
-        p_threat->HandleMove(SCREEN_WIDTH,SCREEN_HEIGHT);
+        //draw threats
+        p_threat1->Show_1(g_screen);
+        p_threat1->HandleMove1(SCREEN_WIDTH,SCREEN_HEIGHT);
+        p_threat2->Show_1(g_screen);
+        p_threat2->HandleMove2(SCREEN_WIDTH,SCREEN_HEIGHT);
+        p_threat3->Show_1(g_screen);
+        p_threat3->HandleMove1(SCREEN_WIDTH,SCREEN_HEIGHT);
+        p_threat4->Show_1(g_screen);
+        p_threat4->HandleMove2(SCREEN_WIDTH,SCREEN_HEIGHT);
+        p_threat5->Show_1(g_screen);
+        p_threat5->HandleMove1(SCREEN_WIDTH,SCREEN_HEIGHT);
+        p_threat6->Show_1(g_screen);
+        p_threat6->HandleMove2(SCREEN_WIDTH,SCREEN_HEIGHT);
 
-         SDL_RenderPresent(g_screen);
+        SDL_RenderPresent(g_screen);
     }
 
     close();
