@@ -1,7 +1,8 @@
 #include "ThreatsObject.h"
 #include<ctime>
 
-int a[21]={-400,-380,-360,-340,-320,-300,-280,-260,-240,-220,-200,-180,-160,-140,-120,-100,-80,-60,-40,-20,0};
+int a[41]={-400,-390,-380,-370,-360,-350,-340,-330,-320,-310,-300,-280,-270,-260,-250,-240,-230,-220,-210,-200,-190,-180,-170,-160,-150,-140,-130,-120,-110,-100,-90,-80,-70,-60,-50,-40,-30,-20,-10,0};
+int temp;
 
 
 ThreatObject::ThreatObject()
@@ -20,19 +21,30 @@ ThreatObject::~ThreatObject()
     ;
 }
 
-void ThreatObject::HandleMove(const int&x_bordr, const int& y_bordr)
+void ThreatObject::HandleMove1(const int&x_bordr1, const int& y_bordr1)
 {
     rect_.x -= x_val_;
-    if(rect_.x < -300)
+    if(rect_.x < -100)
     {
         rect_.x = SCREEN_WIDTH+100;
 
         srand(time(0));
 
-        rect_.y = a[rand() % 20];
+        rect_.y = a[rand() % 40];
+        temp = rect_.y;
     }
 }
 
+void ThreatObject::HandleMove2(const int&x_bordr2, const int& y_bordr2)
+{
+    rect_.x -= x_val_;
+    if(rect_.x < -100)
+    {
+        rect_.x = SCREEN_WIDTH+100;
+
+        rect_.y = temp + 600+150;
+    }
+}
 void ThreatObject::Show_1(SDL_Renderer*des)
 {
     SDL_Rect renderquad = {rect_.x, rect_.y, rect_.w, rect_.h};
